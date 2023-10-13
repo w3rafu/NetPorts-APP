@@ -35,7 +35,7 @@
   Tabs component
 -->
 <section id="tabs">
-  <details in:fade={{duration: 300, delay: 150}}>
+  <details transition:fade={{duration: 300, delay: 150}}>
     <!--What are Ports?-->
     <summary>What are Ports? </summary>
     <p>
@@ -64,7 +64,7 @@
   </details>
 
   <!--What are the different Transport Protocols?-->
-  <details in:fade={{duration: 300, delay: 300}}>
+  <details transition:fade={{duration: 300, delay: 300}}>
     <summary>What are the different Transport Protocols? </summary>
     <!--TCP-->
     <p>
@@ -137,7 +137,7 @@
   </details>
 
   <!--Port Ranges and Types-->
-  <details in:fade={{duration: 300, delay: 450}}>
+  <details transition:fade={{duration: 300, delay: 450}}>
     <summary>Port Ranges and Types</summary>
     <p>
       There are three three types of ports with corresponding port number
@@ -159,8 +159,8 @@
   </details>
 
   <!--Encrypted vs.Unencrytped-->
-  <details in:fade={{duration: 300, delay: 600}}>
-    <summary>Encrypted vs.Unencrytped</summary>
+  <details transition:fade={{duration: 300, delay: 600}}>
+    <summary>Encrypted vs. Unencrypted</summary>
     <!--Encrypted-->
     <p>
       Encrypted data is often referred to as a "Cipher Text", Encrypted means
@@ -202,16 +202,17 @@
     justify-content: center;
     display: flex;
     flex-direction: column;
-    margin: 0 1em;
-    width: 100%;
+    width: 80%;
+    gap: 0.5em;
+    margin-bottom: 3em;
   }
   details {
-    background: var(--darkblue);
+    background: rgba(0, 0, 0, 0.353);
     color: var(--lig);
     border-radius: 7px;
-    margin-bottom: 0.5em;
-    padding: 1em;
-    width: 50ch;
+    width: 100%;
+    padding: 1.5em 1em;
+
   }
   summary {
     font-weight: 500;
@@ -220,13 +221,11 @@
 
   details:hover {
     background-color: var(--lightblue);
-    box-shadow: 0 0 10px var(--lightblue);
   }
 
   details[open] {
     background-color: var(--lightblue);
     padding-bottom: 0.5em !important;
-    box-shadow: 0 0 10px var(--lightblue);
   }
 
   details[open] summary {
@@ -236,6 +235,7 @@
   details[open] p {
     font-size: 0.8em !important;
     margin-bottom: 0.5em !important;
+
   }
 
   span {
@@ -257,6 +257,9 @@
 
   @media (max-width: 768px) {
     details {
+      width: 100%;
+    }
+    #tabs {
       width: 100%;
     }
   }

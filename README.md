@@ -27,3 +27,4 @@ npm run dev -- --open
 - 0.0.1 - Added Informative Tabs
 - 0.0.2 - [Styled Tabs, Fixed bug connecting to database, deployed to vercel for feelback]
 - 0.0.3 - [CSS improvements, input fixed for safari vendor, added 404 redirect, footer changed appearance]
+- 0.0.3.1 - [CSS Improvement, added svg background, faqs now have a toggle button]

@@ -2,7 +2,6 @@
 <script>
   import { goto } from "$app/navigation";
   import { CURRENT_SEARCH } from "$lib/state";
-
 </script>
 
 <div class="container">
@@ -30,14 +29,16 @@
     class="search"
     on:click={() => {
       if ($CURRENT_SEARCH.port) {
-        goto(`/results?port=${$CURRENT_SEARCH.port}&protocol=${$CURRENT_SEARCH.protocol}`);
+        goto(
+          `/results?port=${$CURRENT_SEARCH.port}&protocol=${$CURRENT_SEARCH.protocol}`
+        );
       } else {
         alert("Please enter a port number");
-        let input = document.querySelector("input")
-        if(input){
-            input.focus()
-            input.classList.add('error')
-        };
+        let input = document.querySelector("input");
+        if (input) {
+          input.focus();
+          input.classList.add("error");
+        }
       }
     }}
   >
@@ -57,15 +58,18 @@
   .card {
     align-items: center;
     display: grid;
+    background-color: rgba(0, 0, 0, 0.353);
     grid-template-columns: 1fr 1fr;
-    border-radius: 10px;
+    border-top-right-radius: 7px;
+    border-top-left-radius: 7px;
     text-align: center;
     justify-content: center;
-    padding: 0 1em 1em;
-    width: 100%;
+    padding: 1.3em .5em .4em;
+    width:80%;
+
   }
   h4 {
-    font-weight: 300;
+    font-weight: 500;
     margin-bottom: 0.4em;
     text-align: center;
     color: aliceblue;
@@ -81,19 +85,20 @@
     border-radius: 7px;
     color: rgb(31, 26, 69);
     background-color: rgb(255, 255, 255);
-    height:70px;
+    height: 70px;
   }
-  input, select {
+  input,
+  select {
     width: 90%;
   }
-  @media(max-width: 768px){
-    input, select{
-      width: 100%;
+  @media (max-width: 768px) {
+    input,
+    select {
+      width: 70%;
       height: 55px;
       text-align: center;
     }
   }
-
 
   .search {
     color: white;
@@ -101,17 +106,17 @@
     padding: 1em 1.5em;
     background-color: #009432;
     font-weight: bold;
-    border-radius: 7px;
     font-size: large;
-    width: 90%;
+    width: 80%;
     text-decoration: none;
-
     display: block;
     text-align: center;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
   }
 
-  @media(max-width: 768px){
-    .card{
+  @media (max-width: 768px) {
+    .card {
       grid-template-columns: 1fr;
     }
   }

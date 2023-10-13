@@ -29,7 +29,7 @@
 <style>
   header {
     align-items: center;
-    background-color: transparent;
+    background-color: var(--darkblue);
     color: white;
     display: flex;
     justify-content: space-between;

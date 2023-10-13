@@ -31,7 +31,7 @@ body {
   color: white;
   display: grid;
   font-family: "Inter", sans-serif;
-  grid-template-rows: 80px 1fr 100px;
+  grid-template-rows: 80px 1fr 90px;
   grid-template-areas:
     "header"
     "main"
@@ -47,7 +47,7 @@ nav {
 @media(min-width: 600px) {
   body {
     display: grid !important;
-    grid-template-rows: 80px 1fr 140px;
+    grid-template-rows: 80px 1fr 120px;
     font-size: 20px;
   }
 }

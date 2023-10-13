@@ -49,8 +49,8 @@
     display: flex;
     justify-content: space-evenly;
     text-align: center;
-    margin: 1em;
-    border-radius: 7px;
+
+
   }
   
 
@@ -67,12 +67,4 @@
     border: none;
   }
 
-  a:nth-child(1) {
-    border-radius:  7px 0 0 7px ;
-  }
-
-
- a:nth-child(3) {
-    border-radius: 0 7px 7px 0;
-  }
 </style>

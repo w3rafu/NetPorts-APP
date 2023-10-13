@@ -1,7 +1,4 @@
 <!-- @format -->
-<!--
-  APP HomePage
--->
 <script>
   //Get app state
   import { PAGE_TITLE, CURRENT_SEARCH } from "$lib/state";
@@ -17,38 +14,31 @@
   $CURRENT_SEARCH.protocol = "TCP";
 </script>
 
-
 <!--
   APP HomePage
-  content-wrapper limits the width of the page
-  and centers it in the screen
 -->
-
-<div class="content-wrapper">
-    <SearchForm />
-    
-  <!--Informative Tabs-->
-    <Tabs />
-
-</div>
-
+<h1>
+  Lookup the service associated with a Transfer Protocol Port
+  Number
+</h1>
+<SearchForm />
+<Tabs />
 
 <style>
-  /*
   h1 {
-    background-color: #0000002e;
-    padding: 1em .5em;
-    border-radius: 7px;
-    font-size: 1.1rem;
+    font-size: 1em;
     font-weight: 500;
-    margin-top: .5rem;
+
+    margin-bottom: 1em;
+    padding: 1em 1em;
+    border-radius: 7px;
+
     text-align: center;
-    width: 60ch;
   }
-  @media (max-width: 700px){
-    h1{
+
+  @media (max-width: 768px) {
+    h1 {
       width: 100%;
     }
   }
-*/
 </style>

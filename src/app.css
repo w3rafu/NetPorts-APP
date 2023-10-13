@@ -9,7 +9,7 @@
 }
 
 * {
-  box-sizing: content-box;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
@@ -21,6 +21,7 @@ a {
 html,
 body {
   height: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -30,13 +31,13 @@ body {
   color: white;
   display: grid;
   font-family: "Inter", sans-serif;
-  grid-template-rows: 80px 1fr 100px;
+  grid-template-rows: 80px auto 100px;
   grid-template-areas:
     "header"
     "main"
     "footer";
+  height: 100vh;
 
-  overflow: hidden;
 }
 
 nav {

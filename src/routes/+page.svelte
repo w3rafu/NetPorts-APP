@@ -8,6 +8,7 @@
 
   //Import UI components
   import SearchForm from "$lib/ui_components/other/SearchForm.svelte";
+  import Tabs from "$lib/ui_components/Tabs.svelte";
 
   //Set current page title
   $PAGE_TITLE = "NetPorts";
@@ -26,6 +27,10 @@
 <div class="content-wrapper">
     <h1>Lookup the service associated with a Transfer Protocol Port Number</h1>
     <SearchForm />
+    
+  <!--Informative Tabs-->
+    <Tabs />
+
 </div>
 
 

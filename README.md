@@ -1,11 +1,12 @@
 # NetPorts
 
 Lookup the service associated with a Transfer Protocol Port Number
+Demo: [https://netports.vercel.app/](https://netports.vercel.app)
 
 ## Stack
 
-Sveltekit
-Firebase
+- Sveltekit
+- Firebase
 
 ## Running it
 
@@ -20,6 +21,6 @@ npm run dev -- --open
 
 ## Change Log
 
-0.0.0 - Initial Commit
-0.0.1 - Added Informative Tabs
-0.0.2 - [Styled Tabs, Fixed bug connecting to database, deployed to vercel for feelback ]
+- 0.0.0 - Initial Commit
+- 0.0.1 - Added Informative Tabs
+- 0.0.2 - [Styled Tabs, Fixed bug connecting to database, deployed to vercel for feelback ]

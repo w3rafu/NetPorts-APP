@@ -25,7 +25,6 @@
 -->
 
 <div class="content-wrapper">
-    <h1>Lookup the service associated with a Transfer Protocol Port Number</h1>
     <SearchForm />
     
   <!--Informative Tabs-->
@@ -35,7 +34,7 @@
 
 
 <style>
-  
+  /*
   h1 {
     background-color: #0000002e;
     padding: 1em .5em;
@@ -51,5 +50,5 @@
       width: 100%;
     }
   }
-
+*/
 </style>

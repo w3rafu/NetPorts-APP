@@ -99,9 +99,9 @@
     font-weight: bold;
     border-radius: 7px;
     font-size: large;
-    width: 100%;
+
     text-decoration: none;
-    margin: 0 auto;
+    margin: 0 auto 2em;
     display: block;
     text-align: center;
   }

@@ -203,7 +203,7 @@
     display: flex;
     flex-direction: column;
     margin-top: 30px;
-    width: 100%;
+    margin: 0 1em;
   }
   details {
     background: var(--darkblue);

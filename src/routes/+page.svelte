@@ -21,13 +21,15 @@
 <!--
   APP HomePage
 -->
-<h1>
+<h1 id="top">
   Lookup the service associated with a Transfer Protocol Port
   Number
 </h1>
 <SearchForm />
 
-<FaqsButton on:tabs={()=>{faqs = !faqs}}/>
+<FaqsButton on:tabs={()=>{
+  faqs = !faqs
+}}/>
 
 {#if faqs}
   <Tabs />

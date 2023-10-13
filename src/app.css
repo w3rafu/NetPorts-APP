@@ -9,7 +9,7 @@
 }
 
 * {
-  box-sizing: content-box;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
@@ -18,10 +18,10 @@ a {
   color: inherit;
 }
 
-html,
-body {
+html {
+  position: fixed;
   height: 100%;
-  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -31,13 +31,13 @@ body {
   color: white;
   display: grid;
   font-family: "Inter", sans-serif;
-  grid-template-rows: 80px auto 100px;
+  grid-template-rows: 80px 1fr 100px;
   grid-template-areas:
     "header"
     "main"
     "footer";
-  height: 100vh;
-
+    position: relative;
+  height: 100%;
 }
 
 nav {
@@ -46,9 +46,9 @@ nav {
 
 @media(min-width: 600px) {
   body {
+    display: grid !important;
     grid-template-rows: 80px 1fr 140px;
     font-size: 20px;
-
   }
 }
 

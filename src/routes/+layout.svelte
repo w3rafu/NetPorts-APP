@@ -15,12 +15,7 @@
   //Delay the loading of the page for 500ms
   //This is to allow the page to fade in
   //Header and footer are not delayed
-  let loaded = false;
-  onMount(() => {
-    setTimeout(() => {
-      loaded = true;
-    }, 500);
-  });
+
 </script>
 
 <!--
@@ -36,20 +31,15 @@
 <!--
   APP STRUCTURE
 -->
+
 <Header />
-
-
-      {#if loaded}
-      {#key $page.url.pathname}
-          <main in:fade={{duration: 500}}>
-            <div class="content-wrapper">
-              <slot />
-            </div>
-          </main>
-          {/key}
-      {/if}
-
-
+  {#key $page.url.pathname}
+    <main in:fade={{duration: 500}}>
+      <div class="content-wrapper">
+        <slot />
+      </div>
+    </main>
+  {/key}
 <Footer />
 
 <!--

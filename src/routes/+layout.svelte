@@ -40,7 +40,9 @@
   {#if loaded}
     {#key $page.url.pathname}
         <main in:fade={{duration: 500}}>
-          <slot />
+          <div class="content-wrapper">
+            <slot />
+          </div>
         </main>
     {/key}
   {/if}

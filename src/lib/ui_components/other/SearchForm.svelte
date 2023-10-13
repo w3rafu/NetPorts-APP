@@ -51,16 +51,18 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    max-width: 500px;
+    width: 80%;
   }
   .card {
     align-items: center;
     display: grid;
     grid-template-columns: 2fr 2fr;
-    margin-top: 15px;
+
     border-radius: 10px;
     text-align: center;
     justify-content: center;
+    width: 100%;
+    gap: 1.5em;
   }
   h4 {
     font-weight: bold;
@@ -81,23 +83,23 @@
     background-color: rgb(255, 255, 255);
   }
   input {
-    width: 80%;
+    width: 90%;
   }
 
   select {
     border-radius: 7px;
-    width: 80%;
+    width: 90%;
   }
 
   .search {
     color: white;
     border: none;
-    padding: 1em 2em;
+    padding: 1em 1.5em;
     background-color: #009432;
     font-weight: bold;
     border-radius: 7px;
     font-size: large;
-    width: 90%;
+    width: 100%;
     text-decoration: none;
     margin: 0 auto;
     display: block;

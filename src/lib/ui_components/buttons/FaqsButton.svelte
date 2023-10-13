@@ -2,10 +2,18 @@
     import { createEventDispatcher } from "svelte";
     import { goto } from "$app/navigation";
     let dispatch = createEventDispatcher();
+    let open = false;
+
+
+
+    $: if(open){
+        goto("#tabs")
+    } 
 </script>
 
 <button on:click={() => {
     dispatch('tabs')
+    open  = true
     goto("#tabs")
     }}>
     <span class="material-symbols-outlined">

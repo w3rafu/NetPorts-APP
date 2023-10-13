@@ -98,6 +98,7 @@
       height: 55px;
       text-align: center;
     }
+
   }
 
   .search {
@@ -118,6 +119,9 @@
   @media (max-width: 768px) {
     .card {
       grid-template-columns: 1fr;
+    }
+    .card, .search {
+      width: 90%;
     }
   }
   :global(.error) {

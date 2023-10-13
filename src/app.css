@@ -47,6 +47,7 @@ nav {
   body {
     grid-template-rows: 80px 1fr 140px;
     font-size: 20px;
+    height: 100%;
   }
 }
 
@@ -70,4 +71,5 @@ main {
   padding: 1em;
   overflow-y: auto;
   overflow-x: hidden;
+  height: calc(100vh - 180px) !important;
 }

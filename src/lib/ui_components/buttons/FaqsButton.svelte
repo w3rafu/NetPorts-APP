@@ -4,16 +4,17 @@
     let dispatch = createEventDispatcher();
     let open = false;
 
-
-
     $: if(open){
         goto("#tabs")
     } 
+
 </script>
 
-<button on:click={() => {
+<button 
+    class:active={open === true}
+    on:click={() => {
     dispatch('tabs')
-    open  = true
+    open  = !open
     goto("#tabs")
     }}>
     <span class="material-symbols-outlined">
@@ -27,7 +28,9 @@
         display: flex;
         gap: .5em;
         background-color: rgba(0, 0, 0, 0.353);
-        padding: 1em;
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
+        padding: 1em 2em;
         border-radius: 7px;
         border: none;
         font-size: large;
@@ -35,5 +38,13 @@
         color: white;
         font-weight: bold;
         margin-bottom: 1.9em;
+    }
+
+    button:hover{
+        background-color: #0b0822;
+    }
+
+    .active {
+        background-color: #0b0822;
     }
 </style>

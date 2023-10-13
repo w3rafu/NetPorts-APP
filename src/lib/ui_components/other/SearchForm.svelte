@@ -13,7 +13,7 @@
         bind:value={$CURRENT_SEARCH.port}
         min="0"
         max="1024"
-        placeholder="420"
+        placeholder="e.g. 420"
       />
     </div>
     <div>
@@ -64,12 +64,13 @@
     border-top-left-radius: 7px;
     text-align: center;
     justify-content: center;
-    padding: 1.3em .5em .4em;
+    padding: 1em 1em 0;
     width:80%;
-
+    backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
   }
   h4 {
-    font-weight: 500;
+    font-weight: 600;
     margin-bottom: 0.4em;
     text-align: center;
     color: aliceblue;
@@ -78,14 +79,20 @@
   input,
   select {
     border: none;
-    padding: 0.3em;
-    font-size: 2em;
+    padding: 0.1em 0.3em;
+    font-size: 1.7em;
     font-weight: bold;
     margin-bottom: 0.7em;
     border-radius: 7px;
-    color: rgb(31, 26, 69);
-    background-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    background-color: rgba(10, 0, 0, 0.3);
+
     height: 70px;
+  }
+
+  input:focus{
+    outline: none;
+    border: none;
   }
   input,
   select {
@@ -94,7 +101,7 @@
   @media (max-width: 768px) {
     input,
     select {
-      width: 70%;
+      width: 90%;
       height: 55px;
       text-align: center;
     }

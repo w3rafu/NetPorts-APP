@@ -35,7 +35,7 @@
   Tabs component
 -->
 <section id="tabs">
-  <details transition:fade={{duration: 300, delay: 150}}>
+  <details in:fade={{duration: 300, delay: 150}} out:fade={{duration: 300, delay: 600}}>
     <!--What are Ports?-->
     <summary>What are Ports? </summary>
     <p>
@@ -64,8 +64,8 @@
   </details>
 
   <!--What are the different Transport Protocols?-->
-  <details transition:fade={{duration: 300, delay: 300}}>
-    <summary>What are the different Transport Protocols? </summary>
+  <details in:fade={{duration: 300, delay: 300}} out:fade={{duration: 300, delay: 550}} >
+    <summary>Different Transport Protocols</summary>
     <!--TCP-->
     <p>
       The Transmission Control Protocol (TCP) is a transport protocol that is
@@ -137,7 +137,7 @@
   </details>
 
   <!--Port Ranges and Types-->
-  <details transition:fade={{duration: 300, delay: 450}}>
+  <details in:fade={{duration: 300, delay: 450}}  out:fade={{duration: 300, delay: 400}}>
     <summary>Port Ranges and Types</summary>
     <p>
       There are three three types of ports with corresponding port number
@@ -212,7 +212,8 @@
     border-radius: 7px;
     width: 100%;
     padding: 1.5em 1em;
-
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
   }
   summary {
     font-weight: 500;
@@ -224,7 +225,8 @@
   }
 
   details[open] {
-    background-color: var(--lightblue);
+    background-color:  rgba(0, 0, 0, 0.353);
+
     padding-bottom: 0.5em !important;
   }
 
@@ -260,7 +262,7 @@
       width: 100%;
     }
     #tabs {
-      width: 100%;
+      width: 90%;
     }
   }
 </style>

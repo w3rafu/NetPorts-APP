@@ -202,7 +202,6 @@
     justify-content: center;
     display: flex;
     flex-direction: column;
-    margin-top: 30px;
     margin: 0 1em;
     width: 100%;
   }

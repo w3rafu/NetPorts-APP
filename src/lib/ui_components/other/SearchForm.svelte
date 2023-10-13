@@ -51,21 +51,21 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 80%;
+    width: 100%;
+    margin-bottom: 2em;
   }
   .card {
     align-items: center;
     display: grid;
-    grid-template-columns: 2fr 2fr;
-
+    grid-template-columns: 1fr 1fr;
     border-radius: 10px;
     text-align: center;
     justify-content: center;
+    padding: 0 1em 1em;
     width: 100%;
-    gap: 1.5em;
   }
   h4 {
-    font-weight: bold;
+    font-weight: 300;
     margin-bottom: 0.4em;
     text-align: center;
     color: aliceblue;
@@ -81,15 +81,19 @@
     border-radius: 7px;
     color: rgb(31, 26, 69);
     background-color: rgb(255, 255, 255);
+    height:70px;
   }
-  input {
+  input, select {
     width: 90%;
+  }
+  @media(max-width: 768px){
+    input, select{
+      width: 100%;
+      height: 55px;
+      text-align: center;
+    }
   }
 
-  select {
-    border-radius: 7px;
-    width: 90%;
-  }
 
   .search {
     color: white;
@@ -99,11 +103,17 @@
     font-weight: bold;
     border-radius: 7px;
     font-size: large;
-
+    width: 90%;
     text-decoration: none;
-    margin: 0 auto 2em;
+
     display: block;
     text-align: center;
+  }
+
+  @media(max-width: 768px){
+    .card{
+      grid-template-columns: 1fr;
+    }
   }
   :global(.error) {
     background-color: rgb(220, 94, 94) !important;

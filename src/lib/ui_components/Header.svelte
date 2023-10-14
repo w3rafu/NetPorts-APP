@@ -1,14 +1,17 @@
 <!-- @format -->
 <script>
-  import { PAGE_TITLE } from "$lib/state";
+  import { PAGE_TITLE, CURRENT_SEARCH } from "$lib/state";
   import { page } from "$app/stores";
   import { fade } from "svelte/transition";
   import ButtonHeader from "./buttons/ButtonHeader.svelte";
 </script>
-{#key $PAGE_TITLE}
-<header class:result={$page.url.pathname === "/results"} >
 
-    <div class="title" >
+{#key $PAGE_TITLE}
+  <header 
+  class:result={$CURRENT_SEARCH.status === "success"}
+  class:errorr={$CURRENT_SEARCH.status === "error"}
+  >
+    <div class="title">
       <!--Settings Button-->
       {#if $page.url.pathname === "/"}
         <ButtonHeader name="Settings" path="/settings" />
@@ -18,14 +21,16 @@
       {/if}
 
       <!--Page Title-->
-      <h2>{$PAGE_TITLE}</h2>
+      <h2
+        class:resultPage={$page.url.pathname === "/results"}
+      >{$PAGE_TITLE}</h2>
 
       <!--Info Button-->
       <ButtonHeader name="help" path="/info" />
     </div>
-
-</header>
+  </header>
 {/key}
+
 <style>
   header {
     align-items: center;
@@ -46,5 +51,22 @@
   }
   h2 {
     font-size: 1.7em;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.433);
+
   }
+
+  .result {
+    background-color: var(--green) !important;
+    width: 100%;
+    padding: 1.5em 1em;
+
+  }
+.result h2 {
+  text-shadow: none !important;
+}
+
+.resultPage {
+  text-transform: uppercase;
+}
+
 </style>

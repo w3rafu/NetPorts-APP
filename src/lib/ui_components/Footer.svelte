@@ -31,6 +31,7 @@
     color: white;
     font-weight: bold;
     animation: fade 0.1s ease-in-out;
+    box-shadow: 0 0 20px var(--lightblue);
   }
 
   @keyframes fade {

@@ -2,6 +2,8 @@
 <script>
   import { goto } from "$app/navigation";
   import { CURRENT_SEARCH } from "$lib/state";
+
+  $: searching = false;
 </script>
 
 <div class="container">
@@ -27,8 +29,10 @@
   </div>
   <button
     class="search"
+    class:searching={searching === true}
     on:click={() => {
       if ($CURRENT_SEARCH.port) {
+        searching = true
         goto(
           `/results?port=${$CURRENT_SEARCH.port}&protocol=${$CURRENT_SEARCH.protocol}`
         );
@@ -42,7 +46,12 @@
       }
     }}
   >
+  {#if searching}
+    Searching...
+  {:else}
     Show me!
+  {/if}
+  
   </button>
 </div>
 
@@ -64,20 +73,23 @@
     border-top-left-radius: 7px;
     text-align: center;
     justify-content: center;
-    padding: 1em 1em 0;
+    padding: .6em 1em .4em;
     width:80%;
     backdrop-filter: blur(3px);
         -webkit-backdrop-filter: blur(3px);
   }
   h4 {
-    font-weight: 600;
+    font-weight: bold;
+    font-size: .8em;
+    letter-spacing: 0.05em;
     margin-bottom: 0.4em;
     text-align: center;
-    color: aliceblue;
+    color: rgb(170, 214, 253);
   }
 
   input,
   select {
+    cursor: pointer;
     border: none;
     padding: 0.1em 0.3em;
     font-size: 1.7em;
@@ -85,18 +97,23 @@
     margin-bottom: 0.7em;
     border-radius: 7px;
     color: rgb(255, 255, 255);
-    background-color: rgba(10, 0, 0, 0.3);
-
+    background-color: var(--lightblue);
+    box-shadow: 0 0 20px var(--lightblue);
     height: 70px;
   }
 
   input:focus{
+    background-color: var(--lightblue);
     outline: none;
     border: none;
   }
   input,
   select {
     width: 90%;
+  }
+
+  select:hover {
+    background-color: var(--lightblue);
   }
   @media (max-width: 768px) {
     input,
@@ -105,10 +122,10 @@
       height: 55px;
       text-align: center;
     }
-
   }
 
   .search {
+    cursor: pointer;
     color: white;
     border: none;
     padding: 1em 1.5em;
@@ -121,6 +138,13 @@
     text-align: center;
     border-bottom-left-radius: 7px;
     border-bottom-right-radius: 7px;
+    box-shadow: 0 0 20px #009432;
+
+  }
+
+  .search:hover {
+    background-color: #009432;
+
   }
 
   @media (max-width: 768px) {
@@ -132,6 +156,12 @@
     }
   }
   :global(.error) {
-    background-color: rgb(220, 94, 94) !important;
+    background-color: #ED4C67!important;
+    box-shadow: 0 0 20px #ED4C67!important;
+  }
+  .searching {
+    background-color: #C4E538 !important;
+    box-shadow: 0 0 20px #C4E538 !important;
+    color: var(--darkblue);
   }
 </style>

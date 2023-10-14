@@ -17,17 +17,22 @@
     open  = !open
     goto("#tabs")
     }}>
+    {#if open === false}
     <span class="material-symbols-outlined">
-       person_raised_hand
-    </span>
-    FAQ's
+        person_raised_hand
+     </span>
+     FAQ's
+    {:else}
+        X
+    {/if}
+
 </button>
 
 <style>
     button {
         display: flex;
         gap: .5em;
-        background-color: rgba(0, 0, 0, 0.353);
+        background-color: transparent;
         backdrop-filter: blur(3px);
         -webkit-backdrop-filter: blur(3px);
         padding: 1em 2em;
@@ -41,10 +46,12 @@
     }
 
     button:hover{
-        background-color: #0b0822;
+        background-color: var(--pink);
+        box-shadow: 0 0 20px var(--pink)
     }
 
     .active {
-        background-color: #0b0822;
+        background-color: var(--pink);
+        box-shadow: 0 0 20px var(--pink);
     }
 </style>

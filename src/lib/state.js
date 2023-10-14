@@ -5,6 +5,7 @@ export const PAGE_TITLE = writable("");
 export const CURRENT_SEARCH = writable({
     port: "",
     protocol: "",
+    status: "",
 });
 
 export const currentUser = writable({

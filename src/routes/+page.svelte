@@ -13,6 +13,7 @@
 
   //Set default search protocol to TCP
   $CURRENT_SEARCH.protocol = "TCP";
+  $CURRENT_SEARCH.status = "";
 
   $: faqs = false;
 
@@ -38,13 +39,14 @@
 
 <style>
   h1 {
-    font-size: 1em;
-    font-weight: 500;
-    margin-bottom: 1em;
-    padding: 0.5em 1em .5em;
-    border-radius: 7px;
 
+    font-weight: 500;
+    font-size: 1em;
+    padding: 0.1em 1em 1em;
+    border-radius: 7px;
     text-align: center;
+    width: 60ch;
+    color: aliceblue;
   }
 
   @media (max-width: 768px) {

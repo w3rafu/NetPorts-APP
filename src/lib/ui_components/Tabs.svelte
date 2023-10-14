@@ -64,7 +64,7 @@
   </details>
 
   <!--What are the different Transport Protocols?-->
-  <details in:fade={{duration: 300, delay: 300}} out:fade={{duration: 300, delay: 550}} >
+  <details in:fade={{duration: 300, delay: 300}} out:fade={{duration: 300, delay: 450}} >
     <summary>Different Transport Protocols</summary>
     <!--TCP-->
     <p>
@@ -137,7 +137,7 @@
   </details>
 
   <!--Port Ranges and Types-->
-  <details in:fade={{duration: 300, delay: 450}}  out:fade={{duration: 300, delay: 400}}>
+  <details in:fade={{duration: 300, delay: 450}}  out:fade={{duration: 300, delay: 300}}>
     <summary>Port Ranges and Types</summary>
     <p>
       There are three three types of ports with corresponding port number
@@ -159,7 +159,7 @@
   </details>
 
   <!--Encrypted vs.Unencrytped-->
-  <details transition:fade={{duration: 300, delay: 600}}>
+  <details in:fade={{duration: 300, delay: 600}} out:fade={{duration: 300, delay: 150}}>
     <summary>Encrypted vs. Unencrypted</summary>
     <!--Encrypted-->
     <p>
@@ -202,12 +202,12 @@
     justify-content: center;
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 90%;
     gap: 0.5em;
     margin-bottom: 3em;
   }
   details {
-    background: rgba(0, 0, 0, 0.353);
+    background: var(--lightblue);
     color: var(--lig);
     border-radius: 7px;
     width: 100%;

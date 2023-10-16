@@ -9,13 +9,8 @@
   import { onMount } from "svelte";
 
   //import UI components
-  import Footer from "$lib/ui_components/Footer.svelte";
-  import Header from "$lib/ui_components/Header.svelte";
-
-  //Delay the loading of the page for 500ms
-  //This is to allow the page to fade in
-  //Header and footer are not delayed
-
+  import Footer from "$lib/ui_components/main/Footer.svelte";
+  import Header from "$lib/ui_components/main/Header.svelte";
 </script>
 
 <!--
@@ -34,7 +29,7 @@
 
 <Header />
   {#key $page.url.pathname}
-    <main in:fade={{duration: 500}}>
+    <main in:fade={{duration: 500, delay: 100}}>
       <div class="content-wrapper">
         <slot />
       </div>

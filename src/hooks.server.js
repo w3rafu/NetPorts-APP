@@ -8,12 +8,8 @@ export async function handle({ event, resolve}) {
     //and pass it to the load function
     //Otherwise redirect to the homepage
 	if (event.url.pathname.startsWith('/results')) {
-        if(!event.url.searchParams.get('port')) {
+        if(!event.url.searchParams.get('port') || !event.url.searchParams.get('protocol')) {
             throw redirect(302, '/');
-        }
-        event.locals = {
-            port: event.url.searchParams.get('port'),
-            protocol: event.url.searchParams.get('protocol')?.toLowerCase() || "tcp"
         }
 	}
 	const response = await resolve(event);

@@ -1,57 +1,37 @@
 <!-- @format -->
 <script>
   //Get app state
-  import { PAGE_TITLE, CURRENT_SEARCH } from "$lib/state";
+  import { PAGE_TITLE, CURRENT_SEARCH } from "$lib/utilities/state";
 
   //Import UI components
-  import SearchForm from "$lib/ui_components/other/SearchForm.svelte";
-  import Tabs from "$lib/ui_components/Tabs.svelte";
+  import SearchForm from "$lib/ui_components/main/SearchForm.svelte";
+  import Tabs from "$lib/ui_components/main/Tabs.svelte";
   import FaqsButton from "$lib/ui_components/buttons/FaqsButton.svelte";
 
   //Set current page title
   $PAGE_TITLE = "NetPorts";
 
   //Set default search protocol to TCP
-  $CURRENT_SEARCH.protocol = "TCP";
+  $CURRENT_SEARCH.protocol = "tcp";
+
+  //Resets the search status in case of returning to the home page
   $CURRENT_SEARCH.status = "";
 
+  //Conditional variable to show/hide faqs
   $: faqs = false;
-
 </script>
 
 <!--
-  APP HomePage
+  APP HomePage Structure
 -->
-<h1 id="top">
-  Lookup the service associated with a Transfer Protocol Port
-  Number
-</h1>
 <SearchForm />
-
-<FaqsButton on:tabs={()=>{
-  faqs = !faqs
-}}/>
-
+<!--Button to show/hide faqs-->
+<FaqsButton
+  on:clicked={() => {
+    faqs = !faqs;
+  }}
+/>
+<!--Tabs component-->
 {#if faqs}
   <Tabs />
 {/if}
-
-
-<style>
-  h1 {
-
-    font-weight: 500;
-    font-size: 1em;
-    padding: 0.1em 1em 1em;
-    border-radius: 7px;
-    text-align: center;
-    width: 60ch;
-    color: aliceblue;
-  }
-
-  @media (max-width: 768px) {
-    h1 {
-      width: 100%;
-    }
-  }
-</style>

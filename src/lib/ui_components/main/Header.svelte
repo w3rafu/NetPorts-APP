@@ -1,15 +1,13 @@
 <!-- @format -->
 <script>
-  import { PAGE_TITLE, CURRENT_SEARCH } from "$lib/state";
+  import { PAGE_TITLE, CURRENT_SEARCH } from "$lib/utilities/state";
   import { page } from "$app/stores";
-  import { fade } from "svelte/transition";
-  import ButtonHeader from "./buttons/ButtonHeader.svelte";
+  import ButtonHeader from "../buttons/ButtonHeader.svelte";
 </script>
 
-{#key $PAGE_TITLE}
-  <header 
-  class:result={$CURRENT_SEARCH.status === "success"}
-  class:errorr={$CURRENT_SEARCH.status === "error"}
+
+  <header
+
   >
     <div class="title">
       <!--Settings Button-->
@@ -21,25 +19,26 @@
       {/if}
 
       <!--Page Title-->
-      <h2
-        class:resultPage={$page.url.pathname === "/results"}
-      >{$PAGE_TITLE}</h2>
+      <h2 class:resultPage={$page.url.pathname === "/results"}>
+        {$PAGE_TITLE}
+      </h2>
 
       <!--Info Button-->
       <ButtonHeader name="help" path="/info" />
     </div>
   </header>
-{/key}
+
 
 <style>
   header {
     align-items: center;
-    background-color: var(--darkblue);
+    background-color: #081122d5;
     color: white;
     display: flex;
     justify-content: space-between;
     grid-area: header;
     padding: 1em;
+    backdrop-filter: blur(3px);
   }
 
   .title {
@@ -51,22 +50,18 @@
   }
   h2 {
     font-size: 1.7em;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.433);
-
   }
 
   .result {
-    background-color: var(--green) !important;
     width: 100%;
     padding: 1.5em 1em;
+  }
+  .result h2 {
+    text-shadow: none !important;
+  }
+
+  .resultPage {
+    text-transform: uppercase;
 
   }
-.result h2 {
-  text-shadow: none !important;
-}
-
-.resultPage {
-  text-transform: uppercase;
-}
-
 </style>

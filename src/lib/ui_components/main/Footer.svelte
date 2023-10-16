@@ -1,7 +1,7 @@
 <!-- @format -->
 <script>
   import { page } from "$app/stores";
-  import GoogleIcon from "./other/GoogleIcon.svelte";
+  import GoogleIcon from "../other/GoogleIcon.svelte";
 </script>
 
 <nav>
@@ -31,7 +31,7 @@
     color: white;
     font-weight: bold;
     animation: fade 0.1s ease-in-out;
-    box-shadow: 0 0 20px var(--lightblue);
+
   }
 
   @keyframes fade {
@@ -46,15 +46,13 @@
 
   nav {
     align-items: center;
-    background-color: var(--darkblue);
+    background-color: #081122d5;
     display: flex;
     justify-content: space-evenly;
     text-align: center;
 
 
   }
-  
-
 
   a {
     color: white;

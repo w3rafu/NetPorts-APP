@@ -1,146 +1,72 @@
 <!-- @format -->
 <script>
   //Import APP state
-  import { PAGE_TITLE, CURRENT_SEARCH } from "$lib/state";
-  import GoogleSearch from "$lib/ui_components/GoogleSearch.svelte";
-  import GoogleIcon from "$lib/ui_components/other/GoogleIcon.svelte";
-  import Share from "$lib/ui_components/other/Share.svelte";
-  import { query } from "firebase/firestore";
+  import { PAGE_TITLE, CURRENT_SEARCH } from "$lib/utilities/state";
+
+  //Import UI components
+  import GoogleSearch from "$lib/ui_components/other/GoogleSearch.svelte";
+  import ResultPagination from "$lib/ui_components/main/ResultPagination.svelte";
+
   //Lifecycle Utility
   import { onMount } from "svelte";
+  import IANAresult from "$lib/ui_components/other/IANAresult.svelte";
+  import { afterNavigate } from "$app/navigation";
 
-  //Receive data from firebase
+  //Receive data from the load function (page.server.js)
   export let data;
-  console.log(data);
 
-  //Set current search state
-  //to the data that was passed from firebase
+  //Set current search state to the data that was passed after calling firebase
   onMount(() => {
     //If there was an error, set the page title to "Error"
     if (data.result.status === "error") {
       $PAGE_TITLE = "Error";
       $CURRENT_SEARCH.status = "error";
-    } else {
-      //If not set current page title
-      //With the protocol and port number that the user searched for
-      $PAGE_TITLE = data.protocol + " " + data.port;
-      $CURRENT_SEARCH.status = "success";
     }
   });
+  
+  //Set the page title to the port number
+  $PAGE_TITLE = `Port ${data.result.port}, ${data.result.protocol}`;
 
+  afterNavigate(() => {
+    $PAGE_TITLE = `Port ${data.result.port}, ${data.result.protocol}`;
+  });
 
-
-  let yes = false;
+  console.log($CURRENT_SEARCH);
 </script>
 
 <!--
     The Results page is the page that shows the results of the search
  -->
-
-{#if data.result.status === "error"}
-  <h2>{data.result.description}</h2>
-{:else}
-  <div class="result">
-    <h2>
-      <GoogleIcon size={"1.3em"} name={"quick_reference_all"} />
-      From IANA:
-    </h2>
-    <hr />
-    <div class="wrapper">
-      <!--
-        Service Name
-      -->
-      <div class="row">
-        <h3>Service Name:</h3>
-        {#if data.result.services !== ""}
-          <p>{data.result.services}</p>
-        {:else}
-          <p>None</p>
-        {/if}
-      </div>
-      <!--
-        Service Description
-      -->
-      <div class="row">
-        <h3>Description:</h3>
-        <p>{data.result.description}</p>
-      </div>
-      <!--
-        Registration Date
-      -->
-      <div class="row">
-        <h3>Registration:</h3>
-        {#if data.result.registrationDate !== ""}
-          <p>{data.result.registrationDate}</p>
-        {:else}
-          <p>Not Specified</p>
-        {/if}
-      </div>
-      <!--
-        Modification Date
-      -->
-      <div class="row">
-        {#if data.result.modificationDate !== ""}
-          <h3>Modified:</h3>
-          <p>{data.result.modificationDate}</p>
-        {/if}
-      </div>
-
-      <!--
-        Reference
-      -->
-      <div class="row">
-        {#if data.result.modificationDate !== ""}
-          <h3>Reference:</h3>
-          <a href={data.result.referenceLink} target="_blank"
-            >{data.result.reference}</a
-          >
-        {/if}
-      </div>
+<!--If there is an error, display the error description-->
+{#key data.result.port}
+  {#if data.result.status === "error"}
+    <h2>{data.result.description}</h2>
+  {:else}
+    <div class="result">
+      <!--If there is no error, display the results-->
+      <IANAresult {data} />
+      <!--Google search option-->
+      <GoogleSearch {data} />
     </div>
-  </div>
-  <GoogleSearch {data} />
-{/if}
-
-<Share />
-
+    <!--Move to nearby ports-->
+    <ResultPagination
+      port={data.port}
+      protocol={data.protocol}
+    />
+  {/if}
+{/key}
 <style>
-
-
-
-  .result {
-    display: grid;
-    grid-template-columns: 1fr;
-    background-color: var(--darkblue);
-    width: 100%;
-    border-radius: 7px;
-    padding: 1.5em;
-    margin-top: 0.3em;
-    margin-bottom: 1em;
-    font-size: 1em;
+  .result{
+    width: 80%;
   }
-
-  .row {
-    align-items: center;
-    display: flex;
-    gap: 0.5em;
+  @media (max-width: 768px) {
+    .result {
+      width: 100%;
+    }
   }
-  .wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 0.3em;
+  @media (max-width: 400px) {
+    .result {
+      width: 100%;
+    }
   }
-  h2 {
-    display: flex;
-    align-items: center;
-    gap: 0.3em;
-  }
-
- 
-
-  a {
-    color: var(--lightblue);
-  }
-
-
 </style>

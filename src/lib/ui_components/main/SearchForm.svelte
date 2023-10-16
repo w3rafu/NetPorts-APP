@@ -1,13 +1,51 @@
 <!-- @format -->
 <script>
-  import { goto } from "$app/navigation";
-  import { CURRENT_SEARCH } from "$lib/state";
+  /**
+   * This file controls the form to search for a port number
+  */
 
+  //Import Utilities
+  import { goto } from "$app/navigation";
+  //Import state
+  import { CURRENT_SEARCH } from "$lib/utilities/state";
+
+  //Variable to show/hide the searching message
   $: searching = false;
+
+  //Function to run when the user clicks the search button
+  //It will set the searching variable to true
+  //And then it will redirect the user to the results page
+  //With the port number and protocol that the user entered
+  //If the user didn't enter a port number, it will show an alert
+  //And focus on the input field and add an error class to it
+  function search() {
+    if ($CURRENT_SEARCH.port) {
+      searching = true;
+      goto(
+        `/results?port=${$CURRENT_SEARCH.port}&protocol=${$CURRENT_SEARCH.protocol}`
+      );
+    } else {
+      alert("Please enter a port number");
+      let input = document.querySelector("input");
+      if (input) {
+        input.focus();
+        input.classList.add("error");
+      }
+    }
+  }
+
 </script>
 
-<div class="container">
+<!--
+  The search form component
+-->
+<section id="search-form">
   <div class="card">
+      <!-- The title -->
+    <div>
+      <h1>Lookup data transport services</h1>
+    </div>
+      <!-- The Port Number -->
     <div>
       <h4>Port number:</h4>
       <input
@@ -18,69 +56,60 @@
         placeholder="e.g. 420"
       />
     </div>
+    <!-- The protocol -->
     <div>
       <h4>Protocol:</h4>
       <select bind:value={$CURRENT_SEARCH.protocol}>
-        <option value="UDP">UDP</option>
-        <option value="TCP" selected>TCP</option>
-        <option value="ANY">ANY</option>
+        <option value="udp">UDP</option>
+        <option value="tcp" selected>TCP</option>
+        <option value="any">ANY</option>
       </select>
     </div>
   </div>
+  <!-- The search button -->
   <button
     class="search"
     class:searching={searching === true}
-    on:click={() => {
-      if ($CURRENT_SEARCH.port) {
-        searching = true
-        goto(
-          `/results?port=${$CURRENT_SEARCH.port}&protocol=${$CURRENT_SEARCH.protocol}`
-        );
-      } else {
-        alert("Please enter a port number");
-        let input = document.querySelector("input");
-        if (input) {
-          input.focus();
-          input.classList.add("error");
-        }
-      }
-    }}
+    on:click={search}
   >
-  {#if searching}
-    Searching...
-  {:else}
-    Show me!
-  {/if}
-  
+    {#if searching}
+      Searching...
+    {:else}
+      Show me!
+    {/if}
   </button>
-</div>
+</section>
 
 <style>
-  .container {
+  h1 {
+    font-size: 1.2em;
+    color: rgb(207, 229, 248);
+    margin: 0.5em 0;
+  }
+  #search-form {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    margin-bottom: 2em;
+    width: 80%;
+    margin-bottom: 1em;
   }
   .card {
     align-items: center;
     display: grid;
-    background-color: rgba(0, 0, 0, 0.353);
-    grid-template-columns: 1fr 1fr;
+    background-color: #081122ac;
     border-top-right-radius: 7px;
     border-top-left-radius: 7px;
     text-align: center;
     justify-content: center;
-    padding: .6em 1em .4em;
-    width:80%;
+    padding: 0.4em 1em 0.5em;
+    width: 80%;
     backdrop-filter: blur(3px);
-        -webkit-backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
   }
   h4 {
     font-weight: bold;
-    font-size: .8em;
+    font-size: 0.8em;
     letter-spacing: 0.05em;
     margin-bottom: 0.4em;
     text-align: center;
@@ -100,9 +129,14 @@
     background-color: var(--lightblue);
     box-shadow: 0 0 20px var(--lightblue);
     height: 70px;
+    text-align: center;
   }
 
-  input:focus{
+  input::placeholder {
+    color: rgb(255, 255, 255);
+  }
+
+  input:focus {
     background-color: var(--lightblue);
     outline: none;
     border: none;
@@ -139,29 +173,31 @@
     border-bottom-left-radius: 7px;
     border-bottom-right-radius: 7px;
     box-shadow: 0 0 20px #009432;
-
   }
 
   .search:hover {
     background-color: #009432;
-
   }
 
   @media (max-width: 768px) {
     .card {
       grid-template-columns: 1fr;
     }
-    .card, .search {
+    .card,
+    .search {
       width: 90%;
+    }
+    #search-form {
+      width: 100%;
     }
   }
   :global(.error) {
-    background-color: #ED4C67!important;
-    box-shadow: 0 0 20px #ED4C67!important;
+    background-color: #ed4c67 !important;
+    box-shadow: 0 0 20px #ed4c67 !important;
   }
   .searching {
-    background-color: #C4E538 !important;
-    box-shadow: 0 0 20px #C4E538 !important;
+    background-color: #c4e538 !important;
+    box-shadow: 0 0 20px #c4e538 !important;
     color: var(--darkblue);
   }
 </style>

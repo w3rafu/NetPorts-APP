@@ -4,26 +4,29 @@ import { db } from "$lib/server/firebase";
 //Get firebase functions
 import { doc, getDoc } from "firebase/firestore";
 
-import { CURRENT_SEARCH } from "$lib/state.js";
+//Get current search state
+import { CURRENT_SEARCH, PAGE_TITLE } from "$lib/utilities/state.js";
 
-//Results page data
-//Get the port number and protocol from the URL
-//Call firebase to get the port number info
-//If not provided, page will not load and redirect to homepage
-//Behavior set in hooks.server.js
-export async function load({ locals }) {
-    //@ts-ignore
-    let port = locals.port;
-    //@ts-ignore
-    let protocol = locals.protocol;
+//Function to handle the results page data
+export async function load({ url }){
+
+    //Get the port and protocol from the url/
+    let port = url.searchParams.get('port');
+
+    let protocol = url.searchParams.get('protocol');
+
 
     //Function to call firebase
     const getResults = async (
         /** @type {string} */ port,
         /** @type {string} */ protocol) => {
 
+        //Attempts to connect to firebase
+        //If it succeeds, return the data
+        //If it fails, return an connection error message
         try {
-            //Connect to the collection and get the document
+            //Connect to the collection (protocol name) 
+            //and get the document (port number)
             let collectionReference = doc(db, protocol, port);
             let document = await getDoc(collectionReference);
 
@@ -31,9 +34,11 @@ export async function load({ locals }) {
             let response;
 
             //If the document exists, populate the response with the data
-            //If not, populate the response with a default message
+            //If not, populate the response with an error status
             if (document.exists()) {
                 response = document.data();
+     
+
             } else {
                 response = {
                     description: "Document not found",
@@ -43,19 +48,22 @@ export async function load({ locals }) {
             //Return the response
             return response
 
-        } catch (error) {
+        } 
+        //If the connection fails, return an error message
+        catch (error) {
             return {
                 description: "Connection error",
                 status: "error"
             }
         }
-
     }
 
-    //Pass data to the page
+    // Send the data to the page
     return {
         port: port,
         protocol: protocol,
-        result: await getResults(port, protocol)
+        //@ts-ignore
+        result: await getResults(port, protocol),
+        title: port + " " + protocol
     }
 }

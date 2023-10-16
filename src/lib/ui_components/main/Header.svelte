@@ -1,14 +1,14 @@
 <!-- @format -->
 <script>
-  import { PAGE_TITLE, CURRENT_SEARCH } from "$lib/utilities/state";
+  import { PAGE_TITLE, CURRENT_SEARCH, PAGE_SERVICE } from "$lib/utilities/state";
   import { page } from "$app/stores";
   import ButtonHeader from "../buttons/ButtonHeader.svelte";
+  import { fade } from "svelte/transition";
 </script>
 
 
-  <header
+  <header>
 
-  >
     <div class="title">
       <!--Settings Button-->
       {#if $page.url.pathname === "/"}
@@ -18,14 +18,24 @@
         <ButtonHeader name="arrow_back_ios" path="/" />
       {/if}
 
+  
       <!--Page Title-->
-      <h2 class:resultPage={$page.url.pathname === "/results"}>
+      <h2 class:resultPage={$page.url.pathname === "/results"} >
         {$PAGE_TITLE}
+
+        {#if $PAGE_SERVICE && $page.url.pathname === "/results"}
+        <span class="sname" in:fade={{duration: 1000}}>
+          -> {$PAGE_SERVICE}
+        </span>
+      {/if}
+   
+       
       </h2>
 
       <!--Info Button-->
       <ButtonHeader name="help" path="/info" />
     </div>
+
   </header>
 
 
@@ -63,5 +73,10 @@
   .resultPage {
     text-transform: uppercase;
 
+  }
+
+  .sname {
+    color: var(--lime);
+   
   }
 </style>

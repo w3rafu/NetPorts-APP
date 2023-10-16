@@ -18,13 +18,21 @@
     </h2>
     <hr />
     <div class="wrapper">
+        <div class="row">
+            <h3>Protocol:</h3>
+            {#if data.result.services !== ""}
+              <p class="accent">{data.result.protocol}</p>
+            {:else}
+              <p>None</p>
+            {/if}
+          </div>
       <!--
           Service Name
         -->
       <div class="row">
         <h3>Service Name:</h3>
         {#if data.result.services !== ""}
-          <p>{data.result.services}</p>
+          <p class="accent">{data.result.services}</p>
         {:else}
           <p>None</p>
         {/if}
@@ -61,7 +69,7 @@
           Reference
         -->
       <div class="row">
-        {#if data.result.modificationDate !== ""}
+        {#if data.result.reference !== ""}
           <h3>Reference:</h3>
           <a href={data.result.referenceLink} target="_blank"
             >{data.result.reference}</a
@@ -74,6 +82,10 @@
 
 
 <style>
+    .accent {
+        color: var(--lime);
+        font-weight: bold;
+    }
   .result {
     display: grid;
     grid-template-columns: 1fr;
@@ -82,7 +94,7 @@
     width: 100%;
     border-radius: 7px;
     padding: 1.5em;
-    margin-top: 0.3em;
+
     margin-bottom: 1em;
     font-size: .9em;
   }
@@ -104,6 +116,6 @@
   }
 
   a {
-    color: var(--lightblue);
+    color: var(--lime);
   }
 </style>

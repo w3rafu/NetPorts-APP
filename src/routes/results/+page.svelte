@@ -1,7 +1,7 @@
 <!-- @format -->
 <script>
   //Import APP state
-  import { PAGE_TITLE, CURRENT_SEARCH } from "$lib/utilities/state";
+  import { PAGE_TITLE, CURRENT_SEARCH, PAGE_SERVICE } from "$lib/utilities/state";
 
   //Import UI components
   import GoogleSearch from "$lib/ui_components/other/GoogleSearch.svelte";
@@ -25,13 +25,15 @@
   });
   
   //Set the page title to the port number
-  $PAGE_TITLE = `Port ${data.result.port}, ${data.result.protocol}`;
+  $PAGE_TITLE = `Port ${data.port}`;
+  $PAGE_SERVICE = data.result.services
 
   afterNavigate(() => {
-    $PAGE_TITLE = `Port ${data.result.port}, ${data.result.protocol}`;
+    $PAGE_TITLE = `Port ${data.port}`;
+    $PAGE_SERVICE = data.result.services;
   });
 
-  console.log($CURRENT_SEARCH);
+  console.log(data);
 </script>
 
 <!--
@@ -41,6 +43,10 @@
 {#key data.result.port}
   {#if data.result.status === "error"}
     <h2>{data.result.description}</h2>
+    <ResultPagination
+    port={data.result.port}
+    protocol={data.result.protocol}
+  />
   {:else}
     <div class="result">
       <!--If there is no error, display the results-->
@@ -50,14 +56,18 @@
     </div>
     <!--Move to nearby ports-->
     <ResultPagination
-      port={data.port}
-      protocol={data.protocol}
-    />
+    port={data.result.port}
+    protocol={data.result.protocol}
+  />
   {/if}
 {/key}
 <style>
   .result{
     width: 80%;
+  }
+
+  :global(.sname) {
+    color: var(--lime);
   }
   @media (max-width: 768px) {
     .result {

@@ -43,7 +43,7 @@
   <div class="card">
       <!-- The title -->
     <div>
-      <h1>Lookup data transport services</h1>
+      <h1>Lookup information transport services and related CVE's</h1>
     </div>
       <!-- The Port Number -->
     <div>
@@ -92,7 +92,7 @@
     align-items: center;
     justify-content: center;
     width: 80%;
-    margin-bottom: 1em;
+    margin-bottom: 2em;
   }
   .card {
     align-items: center;
@@ -185,7 +185,7 @@
     }
     .card,
     .search {
-      width: 90%;
+      width: 100%;
     }
     #search-form {
       width: 100%;

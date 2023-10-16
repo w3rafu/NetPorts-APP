@@ -202,7 +202,7 @@
     justify-content: center;
     display: flex;
     flex-direction: column;
-    width: 90%;
+    width: 80%;
     gap: 0.5em;
     margin-bottom: 3em;
   }
@@ -214,6 +214,7 @@
     padding: 1.5em 1em;
     backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(3px);
+    box-shadow: 0 0 20px var(--lightblue);
   }
   summary {
     font-weight: 500;
@@ -227,7 +228,7 @@
   details[open] {
     background-color:  rgba(0, 0, 0, 0.353);
 
-    padding-bottom: 0.5em !important;
+    padding-bottom: 1em !important;
   }
 
   details[open] summary {
@@ -262,7 +263,7 @@
       width: 100%;
     }
     #tabs {
-      width: 90%;
+      width: 100%;
     }
   }
 </style>

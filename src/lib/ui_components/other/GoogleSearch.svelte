@@ -34,14 +34,14 @@
     );
     //Create a copy of the results
     googleResults = [...results];
+
     //Hide the search buttons and title
     let buttons = document.getElementById("search-button");
     let title = document.getElementById("google-title");
-
-    if (buttons) {
-      buttons.style.display = "none";
-      title.style.display = "none";
-    }
+    if (buttons)
+    buttons.style.display = "none";
+    if(title)
+    title.style.display = "none";
   }
 </script>
 
@@ -70,7 +70,7 @@
 
     <!-- If not searching yet -->
     <h3 id="google-title">
-      Would you like to search more about
+      Would you like to more information about
       <span class="accent">{data.result.services}</span>
       port <span class="accent">{data.result.port} </span>?
     </h3>
@@ -80,7 +80,7 @@
       {#if searchMore}
         Searching...
       {:else}
-        Yes, please give a look
+        Yes, please do a search
       {/if}
     </button>
 
@@ -140,14 +140,14 @@
     box-shadow: 0 0 20px var(--lightblue);
   }
 
-  .search-button:hover {
+  #search-button:hover {
     background-color: var(--lime);
     color: var(--darkblue);
     box-shadow: 0 0 20px var(--lime);
   }
 
   .accent {
-    color: aliceblue;
+    color: var(--lime);
     font-weight: 600;
   }
   .hide {

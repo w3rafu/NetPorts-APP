@@ -37,12 +37,13 @@ export async function load({ url }){
             //If not, populate the response with an error status
             if (document.exists()) {
                 response = document.data();
-     
-
+    
             } else {
                 response = {
                     description: "Document not found",
-                    status: "error"
+                    status: "error",
+                    port: port,
+                    protocol: protocol
                 }
             }
             //Return the response
@@ -64,6 +65,7 @@ export async function load({ url }){
         protocol: protocol,
         //@ts-ignore
         result: await getResults(port, protocol),
-        title: port + " " + protocol
+        title: port,
+      
     }
 }

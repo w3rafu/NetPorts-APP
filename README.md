@@ -30,3 +30,4 @@ npm run dev -- --open
 - 0.0.3.1 - [CSS Improvement, added svg background, faqs now have a toggle button]
 - 0.0.4 - [Search form improvements, Google Search integrations, more css upgrades]
 - 0.0.4.5 - [Added pagination to results to browse the previous and next port, more css upgrades, new background, updated file structure]
+- 0.0.4.6 [Improved results, pagination, favorites too]

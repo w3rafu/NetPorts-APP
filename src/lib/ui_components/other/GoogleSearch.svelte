@@ -70,7 +70,7 @@
 
     <!-- If not searching yet -->
     <h3 id="google-title">
-      Would you like to more information about
+      Would you like more information about
       <span class="accent">{data.result.services}</span>
       port <span class="accent">{data.result.port} </span>?
     </h3>

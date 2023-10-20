@@ -3,4 +3,8 @@
     import { PAGE_TITLE, CURRENT_SEARCH } from "$lib/utilities/state";
     $PAGE_TITLE  = "Port List";
     $CURRENT_SEARCH.status = ""
-  </script>
+
+    import PortList from "$lib/ui_components/main/PortList.svelte";
+</script>
+
+  <PortList />

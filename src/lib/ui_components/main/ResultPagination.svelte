@@ -10,6 +10,11 @@
    */
   export let protocol;
 
+  /**
+   * @type {any}
+   */
+   export let services;
+
   //Import user state
   import { USER_FAVORITES } from "$lib/utilities/state";
 
@@ -66,7 +71,7 @@
       currentIsFavorite = !currentIsFavorite;
       return;
     } else {
-      $USER_FAVORITES = [...$USER_FAVORITES, port];
+      $USER_FAVORITES = [...$USER_FAVORITES, { port, protocol, services }];
       currentIsFavorite = !currentIsFavorite;
     }
   }
@@ -170,9 +175,10 @@
   @media (max-width: 500px) {
     button {
       padding: 1em !important;
+      gap: 0.01em;
     }
     .fav {
-      padding: .9em 2em !important;
+      padding: .8em 1.5em !important;
     }
   }
 </style>

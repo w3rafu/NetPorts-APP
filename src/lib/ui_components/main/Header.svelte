@@ -23,10 +23,13 @@
       <h2 class:resultPage={$page.url.pathname === "/results"} >
         {$PAGE_TITLE}
 
-        {#if $PAGE_SERVICE && $page.url.pathname === "/results"}
+        {#if $page.url.pathname === "/results"}
+        {#if $PAGE_SERVICE}
         <span class="sname" in:fade={{duration: 1000}}>
           -> {$PAGE_SERVICE}
         </span>
+
+        {/if}
       {/if}
    
        
@@ -62,13 +65,7 @@
     font-size: 1.7em;
   }
 
-  .result {
-    width: 100%;
-    padding: 1.5em 1em;
-  }
-  .result h2 {
-    text-shadow: none !important;
-  }
+
 
   .resultPage {
     text-transform: uppercase;
@@ -77,6 +74,13 @@
 
   .sname {
     color: var(--lime);
+    text-shadow: 0 0 20px var(--lime);
    
+  }
+
+  @media(max-width: 768px){
+    .resultPage {
+      font-size: 1.3em;
+    }
   }
 </style>

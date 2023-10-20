@@ -15,4 +15,6 @@ export const currentUser = writable({
 });
 
 
-export const USER_FAVORITES = writable([]);
+export const USER_FAVORITES = writable([
+    
+]);

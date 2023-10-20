@@ -21,7 +21,7 @@
         <div class="row">
             <h3>Protocol:</h3>
             {#if data.result.services !== ""}
-              <p class="accent">{data.result.protocol}</p>
+              <p class="accent">{data.result.protocol.toUpperCase()}</p>
             {:else}
               <p>None</p>
             {/if}

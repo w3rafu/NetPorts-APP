@@ -1,10 +1,12 @@
 import { writable } from "svelte/store";
 
 export const PAGE_TITLE = writable("");
+export const PAGE_SERVICE = writable("");
 
 export const CURRENT_SEARCH = writable({
     port: "",
     protocol: "",
+    status: "",
 });
 
 export const currentUser = writable({
@@ -13,4 +15,6 @@ export const currentUser = writable({
 });
 
 
-export const favorites = writable([]);
+export const USER_FAVORITES = writable([
+    
+]);

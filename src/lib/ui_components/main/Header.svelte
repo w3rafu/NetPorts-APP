@@ -1,14 +1,15 @@
 <!-- @format -->
 <script>
-  import { PAGE_TITLE } from "$lib/state";
+  import { PAGE_TITLE, CURRENT_SEARCH, PAGE_SERVICE } from "$lib/utilities/state";
   import { page } from "$app/stores";
+  import ButtonHeader from "../buttons/ButtonHeader.svelte";
   import { fade } from "svelte/transition";
-  import ButtonHeader from "./buttons/ButtonHeader.svelte";
 </script>
-{#key $PAGE_TITLE}
-<header class:result={$page.url.pathname === "/results"} >
 
-    <div class="title" >
+
+  <header>
+
+    <div class="title">
       <!--Settings Button-->
       {#if $page.url.pathname === "/"}
         <ButtonHeader name="Settings" path="/settings" />
@@ -17,24 +18,40 @@
         <ButtonHeader name="arrow_back_ios" path="/" />
       {/if}
 
+  
       <!--Page Title-->
-      <h2>{$PAGE_TITLE}</h2>
+      <h2 class:resultPage={$page.url.pathname === "/results"} >
+        {$PAGE_TITLE}
+
+        {#if $page.url.pathname === "/results"}
+        {#if $PAGE_SERVICE}
+        <span class="sname" in:fade={{duration: 1000}}>
+          -> {$PAGE_SERVICE}
+        </span>
+
+        {/if}
+      {/if}
+   
+       
+      </h2>
 
       <!--Info Button-->
       <ButtonHeader name="help" path="/info" />
     </div>
 
-</header>
-{/key}
+  </header>
+
+
 <style>
   header {
     align-items: center;
-    background-color: transparent;
+    background-color: #081122d5;
     color: white;
     display: flex;
     justify-content: space-between;
     grid-area: header;
     padding: 1em;
+    backdrop-filter: blur(3px);
   }
 
   .title {
@@ -46,5 +63,24 @@
   }
   h2 {
     font-size: 1.7em;
+  }
+
+
+
+  .resultPage {
+    text-transform: uppercase;
+
+  }
+
+  .sname {
+    color: var(--lime);
+    text-shadow: 0 0 20px var(--lime);
+   
+  }
+
+  @media(max-width: 768px){
+    .resultPage {
+      font-size: 1.3em;
+    }
   }
 </style>

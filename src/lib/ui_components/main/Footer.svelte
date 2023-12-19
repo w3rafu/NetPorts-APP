@@ -1,7 +1,9 @@
 <!-- @format -->
 <script>
   import { page } from "$app/stores";
-  import GoogleIcon from "./other/GoogleIcon.svelte";
+  import GoogleIcon from "../other/GoogleIcon.svelte";
+  import { USER_FAVORITES } from "$lib/utilities/state";
+  import {fade } from "svelte/transition";
 </script>
 
 <nav>
@@ -22,15 +24,36 @@
   <!--Favorites Page-->
   <a href="/favorites" class:active={$page.url.pathname === "/favorites"}>
     <GoogleIcon name="favorite" size={"1.6em"} /> <span>Favorites</span>
+
+      {#if $USER_FAVORITES.length > 0}
+      <div class="bubble" transition:fade={{duration: 500}}>
+        {$USER_FAVORITES.length}
+      </div>
+      {/if}
+   
   </a>
 </nav>
 
 <style>
+  .bubble {
+    position: absolute;
+    background-color: var(--pink);
+    color: white;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    font-size: 0.8em;
+    margin-right: -40px;
+    margin-top: -35px;
+    padding: .3em 0 .2em;
+    font-weight: bold;
+  }
   .active {
     background-color: var(--lightblue);
     color: white;
     font-weight: bold;
     animation: fade 0.1s ease-in-out;
+
   }
 
   @keyframes fade {
@@ -45,15 +68,13 @@
 
   nav {
     align-items: center;
-    background-color: var(--darkblue);
+    background-color: #081122d5;
     display: flex;
     justify-content: space-evenly;
     text-align: center;
-    margin: 1em;
-    border-radius: 7px;
-  }
-  
 
+
+  }
 
   a {
     color: white;
@@ -67,12 +88,4 @@
     border: none;
   }
 
-  a:nth-child(1) {
-    border-radius:  7px 0 0 7px ;
-  }
-
-
- a:nth-child(3) {
-    border-radius: 0 7px 7px 0;
-  }
 </style>
